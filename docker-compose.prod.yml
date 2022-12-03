@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  app:
+    image: aryan-nextapp
+    build:
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3003:3000"
