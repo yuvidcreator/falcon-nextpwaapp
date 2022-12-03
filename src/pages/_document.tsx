@@ -4,7 +4,7 @@ import AnalyticsScripts from '../components/common/AnalyticsScripts';
 import { Business, DOMAIN_NAME } from '../utils/Web';
 import BodySchemaMarkup from '../components/common/seo/BodySchemaMarkup';
 
-const APP_NAME = 'WebinoxMedia Next-TS PWA App'
+const APP_NAME = 'Falcon Courier Services'
 
 export default function Document() {
     return (

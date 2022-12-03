@@ -73,7 +73,7 @@ function MobileNav({open, setOpen}: {open: boolean, setOpen: Dispatch<SetStateAc
                     onClick={() => router.push("/")}
                 />
             </div>
-            <div className="flex flex-col ml-6 my-4 space-y-4 text-md text-[#0B0B45] font-medium">
+            <div className="flex flex-col ml-6 my-4 space-y-4 text-lg text-[#0B0B45] font-medium">
                 {links.map(({ href, label}) => (
                     <Link key={label} href={href} className="inline-flex">
                         {label}
