@@ -1,5 +1,5 @@
 export const DOMAIN_NAME = "https://www.falconcourierservice.com"
-export const APP_NAME = "falconcouriers Next-TS PWA App"
+export const APP_NAME = "Falcon Courier Services"
 export const Business = {
     bizType: "LocalBusiness",
     bizNature: "#organization",

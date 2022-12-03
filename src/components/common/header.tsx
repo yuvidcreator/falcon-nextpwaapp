@@ -15,27 +15,20 @@ const links = [
         //     <FaHome className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
         // )
 	},
-	{
-		label: 'About',
-		href: '/about',
-        // icon: (
-        //     <FaUser className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
-        // )
-	},
     {
-        label: 'Portfolio',
-        href: '/portfolio',
+        label: 'Tracking',
+        href: '/tracking',
         // icon: (
         //     <FaFolder className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
         // )
     },
-    {
-        label: 'Services',
-        href: '/services',
-        // icon: (
-        //     <FaSearch className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
-        // )
-    },
+    // {
+    //     label: 'Services',
+    //     href: '/services',
+    //     // icon: (
+    //     //     <FaSearch className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
+    //     // )
+    // },
     {
         label: 'Blogs',
         href: '/blogs',
@@ -43,6 +36,13 @@ const links = [
         //     <FaSearch className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
         // )
     },
+    {
+		label: 'About',
+		href: '/about',
+        // icon: (
+        //     <FaUser className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
+        // )
+	},
 	{
 		label: 'Contact',
 		href: '/contact',

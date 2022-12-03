@@ -11,8 +11,8 @@ const links = [
 		),
 	},
 	{
-		label: 'About',
-		href: '/about',
+		label: 'Tracking',
+		href: '/tracking',
 		icon: (
 			<FaAddressCard className="text-2xl" />
 		),
