@@ -3,7 +3,7 @@ import { FaHome, FaSearch, FaUser, FaFolder, FaDotCircle, FaAddressCard, FaEnvel
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from 'react';
 import Link from 'next/link';
-import falconLogo from '../../../public/Falcon-Logo.jpg'
+import falconLogo from '../../../public/falcon-courier-logo.png'
 
 
 

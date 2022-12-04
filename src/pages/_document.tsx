@@ -34,7 +34,7 @@ export default function Document() {
                 <link rel='icon' type='image/png' sizes='16x16' href='/icons/16x16.png' />
                 <link rel='manifest' href='/manifest.json' />
                 <link rel='mask-icon' href='/icons/512x512.png' color='#5bbad5' />
-                <link rel='shortcut icon' href='/icons/favicon.ico' />
+                <link rel='shortcut icon' href='/favicon.ico' />
 
                 {/* Schema Markeup - Common */}
                 <script type="application/ld+json" 

@@ -2,19 +2,18 @@ FROM node:alpine
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY .env.local.sample .env
 
-RUN yarn install
+COPY . .
 
-COPY next.config.js ./next.config.js
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
 
-COPY package.json yarn.lock tailwind.config.js postcss.config.js tsconfig.json next-env.d.ts .gitignore .eslintrc.json .env.local-example ./
-
-COPY public ./public
-COPY styles ./styles
-COPY pages ./pages
-COPY components ./components
-COPY lib ./lib
-COPY types ./types
+RUN yarn install --frozen-lockfile
 
 CMD ["yarn", "dev"]
