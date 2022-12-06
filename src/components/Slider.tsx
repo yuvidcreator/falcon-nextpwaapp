@@ -19,12 +19,12 @@ function Slider() {
                 <div>
                     <Image src="/falcon-banner.jpeg" alt="" height={680} width={1280} loading="lazy" />
                 </div>
-                <div>
+                {/* <div>
                     <Image src="/falcon-banner.jpeg" alt="" height={680} width={1280} loading="lazy" />
                 </div>
                 <div>
                     <Image src="/falcon-banner.jpeg" alt="" height={680} width={1280} loading="lazy" />
-                </div>
+                </div> */}
             </Carousel>
         </section>
     )

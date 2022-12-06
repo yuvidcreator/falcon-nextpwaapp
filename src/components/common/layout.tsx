@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react"
 import Footer from "./footer"
+import NewFooter from "./Footer1"
 import Header from "./header"
 import MobileBottomNav from "./MobileBottomNav"
 
@@ -15,7 +16,8 @@ const Layout = ({children, ...props}: Props) => {
         <>
             <Header />
                 {children}
-            <Footer />
+            {/* <Footer /> */}
+            <NewFooter />
             <MobileBottomNav />
         </>
     )

@@ -43,7 +43,7 @@ export default function Document() {
                         "@context": "http://schema.org/",
                         "@type": "${Business.bizType}",
                         "url": "${DOMAIN_NAME}",
-                        "logo": "${DOMAIN_NAME}/webinoxmedia-logo.png"
+                        "logo": "${DOMAIN_NAME}/falcon-courier-logo.png"
                     }`}}>
                 </script>
 

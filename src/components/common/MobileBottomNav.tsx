@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FaHome, FaAddressCard, FaEnvelopeOpenText } from 'react-icons/fa'
+import { FiPackage } from 'react-icons/fi'
+import WhatsAppButton from './WhatsAppButton'
 
 const links = [
 	{
@@ -14,7 +16,8 @@ const links = [
 		label: 'Tracking',
 		href: '/tracking',
 		icon: (
-			<FaAddressCard className="text-2xl" />
+			// <FaAddressCard className="text-2xl" />
+			<FiPackage className="text-2xl" />
 		),
 	},
 	{
@@ -48,6 +51,8 @@ const MobileBottomNav = () => {
                             </span>
 						</Link>
 					))}
+
+					<WhatsAppButton />
 				</div>
 			</nav>
         </div>

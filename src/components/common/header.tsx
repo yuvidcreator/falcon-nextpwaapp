@@ -1,9 +1,11 @@
 import Image from 'next/image';
-import { FaHome, FaSearch, FaUser, FaFolder, FaDotCircle, FaAddressCard, FaEnvelopeOpenText } from "react-icons/fa";
+// import { FaHome, FaSearch, FaUser, FaFolder, FaDotCircle, FaAddressCard, FaEnvelopeOpenText } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from 'react';
 import Link from 'next/link';
 import falconLogo from '../../../public/falcon-courier-logo.png'
+import FalconLogoBig from '../../../public/falcon_Logo.png'
+import WhatsAppButton from './WhatsAppButton';
 
 
 
@@ -16,7 +18,7 @@ const links = [
         // )
 	},
     {
-        label: 'Tracking',
+        label: 'Track Package',
         href: '/tracking',
         // icon: (
         //     <FaFolder className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
@@ -29,13 +31,13 @@ const links = [
     //     //     <FaSearch className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
     //     // )
     // },
-    {
-        label: 'Blogs',
-        href: '/blogs',
-        // icon: (
-        //     <FaSearch className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
-        // )
-    },
+    // {
+    //     label: 'Blogs',
+    //     href: '/blogs',
+    //     // icon: (
+    //     //     <FaSearch className="h-4 group-hover:animate-bounce group-hover:text-blue-400" />
+    //     // )
+    // },
     {
 		label: 'About',
 		href: '/about',
@@ -62,26 +64,28 @@ function MobileNav({open, setOpen}: {open: boolean, setOpen: Dispatch<SetStateAc
                 setOpen(!open)
             }}
         >
-            <div className="flex items-center filter drop-shadow-md h-20 ml-4"> 
+            <div className="flex items-center filter drop-shadow-md h-20 ml-4 mt-8"> 
             {/*logo container*/}
                 <Image 
-                    src={falconLogo} 
+                    src={FalconLogoBig} 
                     alt="" 
-                    width={171} 
-                    height={54} 
+                    width={198} 
+                    height={126} 
                     className="cursor-pointer" 
                     onClick={() => router.push("/")}
                 />
             </div>
-            <div className="flex flex-col ml-6 my-4 space-y-4 text-lg text-[#0B0B45] font-medium">
+            <div className="flex flex-col ml-12 my-8 space-y-4 text-lg text-[#0B0B45] font-medium">
                 {links.map(({ href, label}) => (
                     <Link key={label} href={href} className="inline-flex">
                         {label}
                     </Link>
                 ))}
+
+                <WhatsAppButton />
             </div>
 
-            <button className="uppercase mt-8 border px-4 py-1 ml-6 rounded-md font-medium tracking-wide bg-[#070077] text-white hover:bg-blue-600 hover:text-white transition duration-200 shadow-lg" onClick={() => router.push("https://goo.gl/maps/koo5FUkvREdNxi8n8")}>
+            <button className="uppercase mt-2 border px-4 py-1 ml-6 rounded-md font-medium tracking-wide bg-[#070077] text-white hover:bg-blue-600 hover:text-white transition duration-200 shadow-lg" onClick={() => router.push("https://goo.gl/maps/koo5FUkvREdNxi8n8")}>
                 Locate Us
             </button>
         </div>
@@ -96,12 +100,12 @@ function Header() {
 
     return (
         <header>
-            <nav className="fixed top-0 z-[1000] flex items-center justify-between w-full px-2 h-[64px] md:px-12 shadow-md">
+            <nav className="fixed top-0 z-[1000] flex items-center justify-between w-full px-2 h-[64px] lg:h-[81px] lg:px-52 shadow-md bg-white">
                 <Image 
                     src={falconLogo} 
                     alt="" 
                     width={171} 
-                    height={57} 
+                    height={81} 
                     className="cursor-pointer filter drop-shadow-md" 
                     onClick={() => router.push("/")}
                 />
@@ -124,6 +128,10 @@ function Header() {
                                     <span className="span">{label}</span>
                                 </Link>
                             ))}
+
+                            <div className="mt-2">
+                                <WhatsAppButton />
+                            </div>
                         </div>
 
                         <div className="flex space-x-4">
