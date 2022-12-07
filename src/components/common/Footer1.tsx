@@ -21,7 +21,7 @@ const NewFooter = () => {
                     {/* ::Site name */}
                     {/* <h1 className="font-title text-4xl text-center font-semibold mt-auto">Fancy Footer 1</h1> */}
                     {/*logo container*/}
-                    <div className="flex items-center filter drop-shadow-md h-20 ml-4 mt-8 mb-8"> 
+                    <div className="flex items-center filter drop-shadow-md h-20 ml-4 mt-8 lg:mb-4 mb-8"> 
                         <Image 
                             src={FalconLogoBig} 
                             alt="" 
@@ -32,7 +32,7 @@ const NewFooter = () => {
                         />
                     </div>
                     {/* ::Social & copyright */}
-                    <div className="mt-auto flex flex-col items-center">
+                    <div className="mt-auto flex flex-col items-center mb-16 lg:mb-0">
                         {/* :::Social */}
                         <span className="inline-flex mt-6 w-full justify-center md:justify-start md:w-auto">
                         {/* Facebook */}
@@ -69,9 +69,12 @@ const NewFooter = () => {
                         {/* :::Copyright */}
                         <span className="py-4 text-sm text-blue-900">{fullYear} &copy; {Business.site_name}</span>
                         <p className="text-sm">
-                            Designed & Developed by{' '}<br className="md:hidden" />
-                            <Link href="https://www.webinoxmedia.com" passHref className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-violet-800 dark:from-violet-500 dark:to-pink-500">
-                                Yuvraj Limbole
+                            Developed & Maintained by{' '}<br className="md:hidden" />
+                            <Link 
+                                href="https://www.webinoxmedia.com" 
+                                passHref 
+                                className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-violet-800 dark:from-violet-500 dark:to-pink-500">
+                                WebinoxMedia
                             </Link>
                         </p>
                     </div>
@@ -88,15 +91,14 @@ const NewFooter = () => {
                             <li><Link href={"/"} passHref className="hover:text-orange-700">Home</Link></li>
                             <li><Link href={"/about"} passHref className="hover:text-orange-700">About</Link></li>
                             <li><Link href={"/services"} passHref className="hover:text-orange-700">Services</Link></li>
-                            <li><Link href={"/tracking"} passHref className="hover:text-orange-700">Track Package</Link></li>
-                            <li><Link href={"/contact"} passHref className="hover:text-orange-700">Contact us</Link></li>
+                            <li><Link href={"/tracking"} passHref className="hover:text-orange-700">Tracking</Link></li>
                         </nav>
                     </div>
                     {/* ::Address */}
                     <div className="col-span-2 md:col-span-1 pb-0 md:py-3 px-4 flex flex-col items-center sm:items-start">
                         <h3 className="py-1.5 md:py-4 text-xl text-blue-800 font-bold tracking-wide">Address</h3>
                         <Link href={"https://goo.gl/maps/koo5FUkvREdNxi8n8"}>
-                            <p className="md:w-48 text-center sm:text-left text-lg md:text-lg font-medium text-blue-800">Office -422/2217, Opp Statue,, Sant Tukaram Nagar, Pimpri Colony, Pune - 411017</p>
+                            <p className="md:w-48 text-center sm:text-left text-lg lg:text-lg font-medium text-blue-800">Office -422/2217, Opp Statue,, Sant Tukaram Nagar, Pimpri Colony, Pune - 411017</p>
                         </Link>
                     </div>
                     {/* ::Email */}
