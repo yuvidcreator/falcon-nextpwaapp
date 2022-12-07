@@ -90,7 +90,7 @@ const NewFooter = () => {
                         <nav className="flex justify-around md:flex-col font-medium list-none">
                             <li><Link href={"/"} passHref className="hover:text-orange-700">Home</Link></li>
                             <li><Link href={"/about"} passHref className="hover:text-orange-700">About</Link></li>
-                            <li><Link href={"/services"} passHref className="hover:text-orange-700">Services</Link></li>
+                            <li><Link href={"/contact"} passHref className="hover:text-orange-700">Contact</Link></li>
                             <li><Link href={"/tracking"} passHref className="hover:text-orange-700">Tracking</Link></li>
                         </nav>
                     </div>
