@@ -2,10 +2,11 @@
 // import Image from 'next/image'
 import { useRouter } from "next/router";
 import SeoMetas from "../components/common/seo/SeoMetas";
+import Contact1 from "../components/ContactSectionForIndex";
 import Gauranty from "../components/Gauranty";
 import Slider from "../components/Slider";
 import WhatMakeUs from "../components/WhatMakeUs";
-import WhyChooseUs from "../components/WhyChooseUs";
+// import WhyChooseUs from "../components/WhyChooseUs";
 // import ComingSoon from "../components/ComingSoon";
 
 
@@ -40,9 +41,10 @@ export default function Home() {
         <Slider />
       </div>
       <Gauranty />
-      <WhyChooseUs />
-      <div className="p-8">
-        <WhatMakeUs />
+      {/* <WhyChooseUs /> */}
+      <div className="mt-16 mb-8">
+        {/* <WhatMakeUs /> */}
+        <Contact1 />
       </div>
       <div className="flex justify-center text-center">
         {/* <h1>Hello From Falcon</h1> */}

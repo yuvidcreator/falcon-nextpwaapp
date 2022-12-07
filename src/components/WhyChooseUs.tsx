@@ -30,7 +30,7 @@ const WhyChooseUs = () => {
                     </div>
 
                     {/* :FEATURES */}
-                    <dl className="order-3 col-span-full lg:col-span-1 row-span-1 w-full grid grid-cols-4 gap-6">
+                    <dl className="order-3 col-span-full lg:col-span-1 row-span-1 w-full grid grid-cols-4 gap-6 justify-center items-center text-center md:mt-16">
                         {/* ::Feature 1 -> Aiport Car */}
                         <div className="col-span-full sm:col-span-2 md:col-span-1 lg:col-span-full w-full flex flex-col lg:flex-row">
                             {/* Icon */}
@@ -67,15 +67,15 @@ const WhyChooseUs = () => {
                         <div className="col-span-full sm:col-span-2 md:col-span-1 lg:col-span-full w-full flex flex-col lg:flex-row">
                             {/* Icon */}
                             <span className="flex-shrink-0 mx-auto lg:mx-0 p-2 w-full sm:w-auto max-w-xs inline-flex justify-center items-center rounded-xl bg-yellow-800">
-                            {/* <img src="https://fancytailwind.com/static/92386a40e6ef929c5952951e1d383538/discount-hand.svg" alt="" className="w-10 lg:w-14 h-10 lg:h-14" /> */}
-                            <MdLocalOffer className="w-10 lg:w-14 h-10 lg:h-14 text-white" />
-                            <dt className="ml-2 sm:hidden text-white font-semibold">Special Offers</dt>
+                                {/* <img src="https://fancytailwind.com/static/92386a40e6ef929c5952951e1d383538/discount-hand.svg" alt="" className="w-10 lg:w-14 h-10 lg:h-14" /> */}
+                                <MdLocalOffer className="w-10 lg:w-14 h-10 lg:h-14 text-white" />
+                                <dt className="ml-2 sm:hidden text-white font-semibold">Special Offers</dt>
                             </span>
                             <div className="lg:ml-4 mx-auto max-w-sm inline-flex flex-col text-center lg:text-left">
-                            {/* Feature title */}
-                            <dt className="hidden sm:block font-semibold">Special Discount</dt>
-                            {/* Description */}
-                            <dd className="mt-2 text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit ipsam quas corporis architecto odio laborum.</dd>
+                                {/* Feature title */}
+                                <dt className="hidden sm:block font-semibold">Special Discount</dt>
+                                {/* Description */}
+                                <dd className="mt-2 text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit ipsam quas corporis architecto odio laborum.</dd>
                             </div>
                         </div>
 
@@ -83,15 +83,15 @@ const WhyChooseUs = () => {
                         <div className="col-span-full sm:col-span-2 md:col-span-1 lg:col-span-full w-full flex flex-col lg:flex-row mb-8">
                             {/* Icon */}
                             <span className="flex-shrink-0 mx-auto lg:mx-0 p-2 w-full sm:w-auto max-w-xs inline-flex justify-center items-center rounded-xl bg-yellow-400">
-                            {/* <img src="https://fancytailwind.com/static/056c3d882450dcc75bda09bea770f67b/tour-guide.svg" alt="" className="w-10 lg:w-14 h-10 lg:h-14" /> */}
-                            <MdLocalShipping className="w-10 lg:w-14 h-10 lg:h-14 text-white" />
-                            <dt className="ml-2 sm:hidden text-white font-semibold">Delivery Tracking</dt>
+                                {/* <img src="https://fancytailwind.com/static/056c3d882450dcc75bda09bea770f67b/tour-guide.svg" alt="" className="w-10 lg:w-14 h-10 lg:h-14" /> */}
+                                <MdLocalShipping className="w-10 lg:w-14 h-10 lg:h-14 text-white" />
+                                <dt className="ml-2 sm:hidden text-white font-semibold">Delivery Tracking</dt>
                             </span>
                             <div className="lg:ml-4 mx-auto max-w-sm inline-flex flex-col text-center lg:text-left">
-                            {/* Feature title */}
-                            <dt className="hidden sm:block font-semibold">Delivery Tracking</dt>
-                            {/* Description */}
-                            <dd className="mt-2 text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit ipsam quas corporis architecto odio laborum.</dd>
+                                {/* Feature title */}
+                                <dt className="hidden sm:block font-semibold">Delivery Tracking</dt>
+                                {/* Description */}
+                                <dd className="mt-2 text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit ipsam quas corporis architecto odio laborum.</dd>
                             </div>
                         </div>
                     </dl>
