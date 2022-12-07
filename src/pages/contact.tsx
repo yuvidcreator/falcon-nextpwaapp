@@ -44,7 +44,7 @@ const Contact = () => {
                         {/* :::label */}
                         <label htmlFor="name" className="sr-only">Name</label>
                         {/* :::input */}
-                        <input ref={nameRef} type="text" id="name" name="name"
+                        <input type="text" id="name" name="name"
                             placeholder="Name"
                             className="form-input w-full block shadow-sm rounded border-gray-300 bg-gray-100 text-base placeholder-gray-300 focus:border-green-400 focus:ring-1 focus:ring-green-400"
                         />
@@ -54,7 +54,7 @@ const Contact = () => {
                         {/* :::label */}
                         <label htmlFor="email" className="sr-only">Email</label>
                         {/* :::input */}
-                        <input ref={emailRef} type="email" id="email" name="email"
+                        <input type="email" id="email" name="email"
                             placeholder="Email Address"
                             className="form-input w-full block shadow-sm rounded border-gray-300 bg-gray-100 text-base placeholder-gray-300 focus:border-green-400 focus:ring-1 focus:ring-green-400"
                         />
@@ -64,7 +64,7 @@ const Contact = () => {
                         {/* :::label */}
                         <label htmlFor="message" className="sr-only">Message</label>
                         {/* :::input */}
-                        <textarea ref={messageRef} name="message" id="message" cols="30" rows="4"
+                        <textarea name="message" id="message"
                             placeholder="How can we help?"
                             className="form-textarea resize-none w-full shadow-sm rounded border-gray-300 bg-gray-100 placeholder-gray-300 focus:border-green-400 focus:ring-green-400"
                         ></textarea>
