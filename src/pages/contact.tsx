@@ -1,18 +1,40 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 // import GradientText from '../components/GradientText'
 import { FiMail } from 'react-icons/fi'
 import Link from 'next/link'
 
 const Contact = () => {
-    const nameRef = useRef()
-    const emailRef = useRef()
-    const messageRef = useRef()
+    // const nameRef = useRef()
+    // const emailRef = useRef()
+    // const messageRef = useRef()
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
         /* 
         Do something here !
         */
+
+        if (name==="") {
+            console.log("Please Enter Name")
+        } if (email==="") {
+            console.log("Please Enter Email")
+        } if (message==="") {
+            console.log("Please Enter Message")
+        } else {
+            console.log(name, email, message);
+            const inputData = {
+                name, email, message
+            };
+
+            console.log(inputData);
+            return (
+                <></>
+            )
+        }
     }
 
     return (
@@ -24,7 +46,7 @@ const Contact = () => {
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60495.36271119727!2d73.7479231!3d18.6208612!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b85fd0b98d8b%3A0xbc1a08164608f320!2sFALCON%20COURIERS%20%26CARGO%26LOGISTICS!5e0!3m2!1sen!2sin!4v1670385721737!5m2!1sen!2sin" 
                         width="100%" 
-                        height="300px" 
+                        height="600px" 
                         scrolling="no" 
                         frameBorder="0;" 
                         loading="lazy" 
@@ -34,8 +56,6 @@ const Contact = () => {
                     />
             </div>
 
-
-
             {/* :CONTACT FORM CONTAINER */}
             <div className="order-3 md:order-2 col-span-full md:col-span-1 py-5 md:py-10 px-6">
                 <form action="" className="mx-auto max-w-xl space-y-4" onSubmit={handleSubmit}>
@@ -44,9 +64,16 @@ const Contact = () => {
                         {/* :::label */}
                         <label htmlFor="name" className="sr-only">Name</label>
                         {/* :::input */}
-                        <input type="text" id="name" name="name"
-                            placeholder="Name"
-                            className="form-input w-full block shadow-sm rounded border-gray-300 bg-gray-100 text-base placeholder-gray-300 focus:border-green-400 focus:ring-1 focus:ring-green-400"
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            placeholder="Enter Name..."
+                            className="w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-blue-800 font-light text-black border mt-0 form-input form-input-lg"
+                            value={name} 
+                            onChange={(e)=>setName(e.target.value)}
+                            pattern="[a-zA-Z]{1,20}"
+                            title="Special characters and numbers not allowed"
                         />
                     </div>
                     {/* ::Email Input */}
@@ -54,9 +81,14 @@ const Contact = () => {
                         {/* :::label */}
                         <label htmlFor="email" className="sr-only">Email</label>
                         {/* :::input */}
-                        <input type="email" id="email" name="email"
-                            placeholder="Email Address"
-                            className="form-input w-full block shadow-sm rounded border-gray-300 bg-gray-100 text-base placeholder-gray-300 focus:border-green-400 focus:ring-1 focus:ring-green-400"
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="Email Address..."
+                            className="w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-blue-800 font-light text-black border mt-0 form-input form-input-lg"
+                            value={email} 
+                            onChange={(e)=>setEmail(e.target.value)}
                         />
                     </div>
                     {/* ::Message Input */}
@@ -64,14 +96,24 @@ const Contact = () => {
                         {/* :::label */}
                         <label htmlFor="message" className="sr-only">Message</label>
                         {/* :::input */}
-                        <textarea name="message" id="message"
+                        <textarea 
+                            name="message" 
+                            id="message"
                             placeholder="How can we help?"
-                            className="form-textarea resize-none w-full shadow-sm rounded border-gray-300 bg-gray-100 placeholder-gray-300 focus:border-green-400 focus:ring-green-400"
+                            className="form-textarea w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-blue-800 font-light text-black border mt-0 form-input form-input-lg"
+                            value={message} 
+                            onChange={(e)=>setMessage(e.target.value)}
+                            title="Special characters and numbers not allowed"
                         ></textarea>
                     </div>
                     {/* ::Submit Button */}
-                    <div>
-                    <button type="submit" className="py-2 px-6 rounded bg-green-400 text-base text-white font-semibold uppercase hover:bg-green-500">Send Message</button>
+                    <div className="text-center items-center justify-center">
+                        <button 
+                            type="submit" 
+                            className="w-full sm:w-6/12 col-auto rounded-md bg-blue-800 py-2 px-8 lg:col-span-2 font-semibold shadow-lg shadow-pink-500/20 transition-all duration-300 hover:-translate-y-[2px] hover:bg-black hover:shadow-blue-800/20 text-white text-center items-center"    
+                        >
+                            Send Message
+                        </button>
                     </div>
                 </form>
             </div>
@@ -86,7 +128,7 @@ const Contact = () => {
                     {/* ::Text */}
                     <p className="text-sm text-gray-500">Falcon Couriers provides businesses across Canada with responsible delivery at a competitive price. There’s a Falcon to our delivery standards that you won’t find anywhere else.</p>
                     {/* ::Email contact */}
-                    <Link href="#mail" className="inline-flex items-center text-sm text-blue-400 font-semibold hover:text-blue-500">
+                    <Link href="mailto:info@falconcourierservice.com" className="inline-flex items-center text-sm text-blue-400 font-semibold hover:text-blue-500">
                         {/* <MailIcon className="mr-2 w-5 text-gray-400" /> */}
                         <FiMail className="mr-2 w-5 text-gray-400" /> info@falconcourierservice.com
                     </Link>

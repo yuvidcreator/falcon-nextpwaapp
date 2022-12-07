@@ -1,10 +1,11 @@
 // import Head from 'next/head'
 // import Image from 'next/image'
-
 import { useRouter } from "next/router";
 import SeoMetas from "../components/common/seo/SeoMetas";
+import Gauranty from "../components/Gauranty";
 import Slider from "../components/Slider";
-
+import WhatMakeUs from "../components/WhatMakeUs";
+import WhyChooseUs from "../components/WhyChooseUs";
 // import ComingSoon from "../components/ComingSoon";
 
 
@@ -37,6 +38,11 @@ export default function Home() {
       />
       <div className="mt-16">
         <Slider />
+      </div>
+      <Gauranty />
+      <WhyChooseUs />
+      <div className="p-8">
+        <WhatMakeUs />
       </div>
       <div className="flex justify-center text-center">
         {/* <h1>Hello From Falcon</h1> */}

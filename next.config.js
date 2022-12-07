@@ -30,7 +30,7 @@ const nextConfig = withPWA({
   poweredByHeader: false, // disable powered by header.
   trailingSlash: true,
   images: {
-    domains: ['images.unsplash.com','dummyimage.com'],
+    domains: ['images.unsplash.com','dummyimage.com','cdn.tailgrids.com', 'fancytailwind.com'],
   },
   output: 'standalone',
 })
