@@ -17,23 +17,30 @@ type trackingType = {
     proof: string,
     reciepts: string,
     status: string,
-    tracking_updates: any
+    // tracking_updates: any
 }
 
 
 type updateType = {
-    update_note: string,
-    updation_datetime: string
+    update_note: string;
+    updation_datetime: string;
 }
 
+
+type packageType = {
+    package: string;
+}
 
 // const BACKEND_API_URL = process.env.FALCON_API
 // const BACKEND_API_URL = "http://170.187.252.177/api"
 
 
-const fetchData = () => { return axios.get('http://170.187.252.177/api/v1/tracking/') }
 
-const Tracker = () => {
+const Tracker = (props: packageType) => {
+
+    console.log(props.package);
+    
+    const fetchData = () => { return axios.get(`http://localhost:8000/api/v1/tracking/${props.package}/`) }
 
     const {isLoading, data, error, isFetching, refetch} = useQuery(
         'super-heros', 
@@ -51,8 +58,8 @@ const Tracker = () => {
 
     if (isLoading || isFetching) {
         return (
-            // <h2>Loading...</h2>
-            <Spinner />
+            <h2>Loading...</h2>
+            // <Spinner />
         )
     }
 
@@ -62,11 +69,11 @@ const Tracker = () => {
 
     // console.log(data?.data)
     
-    const packageData = data?.data.data
-    // console.log(packageData.data)
+    const packageData = data?.data
+    console.log(packageData)
 
     const newCustDateTime = (x: any) => {
-        if (packageData.delivery_date !== null) {
+        if (packageData.package.delivery_date !== null || packageData.updates.updation_datetime !== null) {
             const formatDateTime = new Intl.DateTimeFormat('en-GB', { 
                 dateStyle: 'medium', 
                 timeStyle: 'short' 
@@ -83,8 +90,7 @@ const Tracker = () => {
     return (
         <>
             {/* <div>Following are the Details of Consignment(s):</div> */}
-            
-                {
+                {/* {
                     packageData.map((item: trackingType) => {
                         return (
                             <>
@@ -97,8 +103,8 @@ const Tracker = () => {
                                     {
                                         item.delivery_date ? <p>Delivery Date: {newCustDateTime(new Date(item.delivery_date))}</p> : <p>Delivery Date: </p>
                                     }
-                                    {/* <p>Delivery Date: {newCustDateTime(new Date(item.delivery_date))}</p> */}
-                                    {/* <p>Delivery Date: {item.delivery_date}</p> */}
+                                    <p>Delivery Date: {newCustDateTime(new Date(item.delivery_date))}</p>
+                                    <p>Delivery Date: {item.delivery_date}</p>
                                     <p>Proof: {item.proof}</p>
                                     <p>Status: {item.status}</p>
                                     {
@@ -107,7 +113,6 @@ const Tracker = () => {
                                                 <div key={tu.update_note}>
                                                     <p>Note: {tu.update_note}</p>
                                                     <p>Updation Date: {newCustDateTime(new Date(tu.updation_datetime))}</p>
-                                                    {/* <p>Updation Date: {tu.updation_datetime}</p> */}
                                                 </div>
                                             )
                                         })
@@ -117,9 +122,28 @@ const Tracker = () => {
                             </>
                         )
                     })
+                } */}
+                <p>Package No: {packageData.package.package_no}</p>
+                <p>Consignor: {packageData.package.consignor}</p>
+                <p>Consignee Name: {packageData.package.consignee_name}</p>
+                <p>Consignee Address: {packageData.package.consignee_address}</p>
+                <p>Pickup Date: {newCustDateTime(new Date(packageData.package.pickup_date))}</p>
+                {
+                    packageData.package.delivery_date ? <p>Delivery Date: {newCustDateTime(new Date(packageData.package.delivery_date))}</p> : <p>Delivery Date: </p>
                 }
-
                 <br />
+                {
+                    packageData.updates.map((item: updateType) => {
+                        return (
+                            <>
+                                <div key={item.update_note}>
+                                    <p>Note: {item.update_note}</p>
+                                    <p>Updation Date: {newCustDateTime(new Date(item.updation_datetime))}</p>
+                                </div>
+                            </>
+                        )
+                    })
+                }
         </>
     )
 }
