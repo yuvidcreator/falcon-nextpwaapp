@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { useQuery } from 'react-query'; // userQuery used for basic datafetching 
 import axios from 'axios';
-import Spinner from '../common/Spinner';
-import Link from 'next/link';
+// import Spinner from '../common/Spinner';
+import { FROMAPI_URL, FROMBACK_URL } from '../../utils';
 
 
 type trackingType = {
@@ -32,21 +33,14 @@ type packageType = {
 }
 
 
-const BACKEND_API_URL = process.env.FALCON_API
-const BACK_URL = process.env.BACKEND_URL
-// const BACKEND_API_URL = "http://170.187.252.177/api"
-// const LOCAL_BACKEND_API = "http://localhost:8000/api"
-// const LOCAL_BACKEND = "http://localhost:8000/"
-
-
 
 
 const TrackingDetails = (props: packageType) => {
 
     // console.log(props.package);
     
-    const fetchData = () => { return axios.get(`${BACKEND_API_URL}/v1/tracking/${props.package}/`) }
-    // const fetchData = () => { return axios.get(`http://localhost:8000/api/v1/tracking/${props.package}/`) }
+    const fetchData = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${props.package}/`) }
+    // const fetchData = () => { return axios.get(`http://127.0.0.1:8000/api/v1/tracking/${props.package}/`) }
 
     const {isLoading, data, error, isFetching, refetch} = useQuery(
         'super-heros', 
@@ -94,36 +88,6 @@ const TrackingDetails = (props: packageType) => {
 
     return (
         <section>
-            {/* <p>Package No: {packageData.package.package_no}</p>
-            <p>Consignor: {packageData.package.consignor}</p>
-            <p>Consignee Name: {packageData.package.consignee_name}</p>
-            <p>Consignee Address: {packageData.package.consignee_address}</p>
-            <p>Account No: {packageData.package.account_no}</p>
-            <p>Forwarding Associate: {packageData.package.forwarding_associate}</p>
-            <p>Proof: {packageData.package.proof}</p>
-            <p>P.O.D.: {packageData.package.pod}</p>
-            <p>Status: {packageData.package.status}</p>
-            <p>Pickup Date: {newCustDateTime(new Date(packageData.package.pickup_date))}</p>
-            {
-                packageData.package.delivery_date ? <p>Delivery Date: {newCustDateTime(new Date(packageData.package.delivery_date))}</p> : <p>Delivery Date: </p>
-            }
-            <br />
-            {
-                packageData.updates.map((item: updateType) => {
-                    return (
-                        <>
-                            <div key={item.update_note}>
-                                <p>Note: {item.update_note}</p>
-                                <p>Updation Date: {newCustDateTime(new Date(item.updation_datetime))}</p>
-                            </div>
-                        </>
-                    )
-                })
-            }
-            <br />
-            <p>Reciept: {packageData.package.reciepts}</p>
-            <br /> */}
-
             <h2 className="mb-6 text-xl font-semibold text-black">Following are the Details of Consignment(s):</h2>
 
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -268,7 +232,7 @@ const TrackingDetails = (props: packageType) => {
                                 {
                                     packageData.package.reciepts ? (
                                         <Link 
-                                            href={`${BACK_URL}/${packageData.package.reciepts}`} 
+                                            href={`${FROMBACK_URL}/${packageData.package.reciepts}`} 
                                             passHref 
                                             target={"_blank"}
                                             className="font-semibold text-lg"

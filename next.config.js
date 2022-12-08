@@ -22,7 +22,8 @@ const withPWA = require('next-pwa')({
 
 const nextConfig = withPWA({
   env: {
-    FALCON_API: 'http://170.187.252.177/api',
+    API_URL: process.env.FALCON_API,
+    BACK_URL: process.env.BACKEND_URL,
   },
   reactStrictMode: true,
   swcMinify: true,
