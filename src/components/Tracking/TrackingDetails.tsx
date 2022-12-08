@@ -5,21 +5,21 @@ import axios from 'axios';
 import { FROMAPI_URL, FROMBACK_URL } from '../../utils';
 
 
-type trackingType = {
-    id: number,
-    package_no: string,
-    consignor: string,
-    consignee_name: string,
-    consignee_address: string,
-    forwarding_associate: string,
-    delivery_date: string,
-    pickup_date: string,
-    pod: string,
-    account_no: string,
-    proof: string,
-    reciepts: string,
-    status: string,
-}
+// type trackingType = {
+//     id: number,
+//     package_no: string,
+//     consignor: string,
+//     consignee_name: string,
+//     consignee_address: string,
+//     forwarding_associate: string,
+//     delivery_date: string,
+//     pickup_date: string,
+//     pod: string,
+//     account_no: string,
+//     proof: string,
+//     reciepts: string,
+//     status: string,
+// }
 
 
 type updateType = {
@@ -36,11 +36,8 @@ type packageType = {
 
 
 const TrackingDetails = (props: packageType) => {
-
-    // console.log(props.package);
     
     const fetchData = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${props.package}/`) }
-    // const fetchData = () => { return axios.get(`http://127.0.0.1:8000/api/v1/tracking/${props.package}/`) }
 
     const {isLoading, data, error, isFetching, refetch} = useQuery(
         'super-heros', 
@@ -97,7 +94,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="col" className="py-4 px-6">
                                 Pakcage Details
                             </th>
-                            <th scope="col" className="py-4 px-6 bg-red-600 text-white">
+                            <th scope="col" className="py-4 px-6 bg-blue-700 text-white">
                                 Tracking Details
                             </th>
                         </tr>
@@ -108,7 +105,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Package No:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.package_no}
                             </td>
                         </tr>
@@ -116,7 +113,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Consignor:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.consignor}
                             </td>
                         </tr>
@@ -124,7 +121,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Consignee Name:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.consignee_name}
                             </td>
                         </tr>
@@ -132,7 +129,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Consignee Address:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.consignee_address}
                             </td>
                         </tr>
@@ -140,7 +137,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Forwarding Associate:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.forwarding_associate}
                             </td>
                         </tr>
@@ -148,7 +145,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Account No:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.account_no}
                             </td>
                         </tr>
@@ -156,7 +153,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Proof:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.proof}
                             </td>
                         </tr>
@@ -164,7 +161,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 P.O.D.:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.pod}
                             </td>
                         </tr>
@@ -172,7 +169,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Pickup Date:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {newCustDateTime(new Date(packageData.package.pickup_date))}
                             </td>
                         </tr>
@@ -185,7 +182,7 @@ const TrackingDetails = (props: packageType) => {
                                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                 Note:
                                             </th>
-                                            <td className="py-4 px-6 bg-red-600 text-white">
+                                            <td className="py-4 px-6 bg-blue-600 text-white">
                                                 {item.update_note}
                                             </td>
                                         </tr>
@@ -193,7 +190,7 @@ const TrackingDetails = (props: packageType) => {
                                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                 Updation Date:
                                             </th>
-                                            <td className="py-4 px-6 bg-red-600 text-white">
+                                            <td className="py-4 px-6 bg-blue-600 text-white">
                                                 {newCustDateTime(new Date(item.updation_datetime))}
                                             </td>
                                         </tr>
@@ -205,21 +202,21 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Delivery Status:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {packageData.package.status}
                             </td>
                         </tr>
                         <tr className="border-b border">
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
-                                Delivered Date:
+                                Deliveblue Date:
                             </th>
                             {
                                 packageData.package.delivery_date ? (
-                                    <td className="py-4 px-6 bg-red-600 text-white">
+                                    <td className="py-4 px-6 bg-blue-600 text-white">
                                         {newCustDateTime(new Date(packageData.package.delivery_date))}
                                     </td>
                                 ) : (
-                                    <td className="py-4 px-6 bg-red-600 text-white">
+                                    <td className="py-4 px-6 bg-blue-600 text-white">
                                     </td>
                                 )
                             }
@@ -228,7 +225,7 @@ const TrackingDetails = (props: packageType) => {
                             <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                 Reciept:
                             </th>
-                            <td className="py-4 px-6 bg-red-600 text-white">
+                            <td className="py-4 px-6 bg-blue-600 text-white">
                                 {
                                     packageData.package.reciepts ? (
                                         <Link 
