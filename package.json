@@ -19,7 +19,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "react-query": "^3.39.2",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
     "@types/node": "18.11.9",

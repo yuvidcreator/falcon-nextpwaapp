@@ -21,6 +21,9 @@ const withPWA = require('next-pwa')({
 
 
 const nextConfig = withPWA({
+  env: {
+    FALCON_API: 'http://170.187.252.177/api',
+  },
   reactStrictMode: true,
   swcMinify: true,
   poweredByHeader: false, // disable powered by header.

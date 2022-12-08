@@ -32,10 +32,11 @@ type packageType = {
 }
 
 
-// const BACKEND_API_URL = process.env.FALCON_API
+const BACKEND_API_URL = process.env.FALCON_API
+const BACK_URL = process.env.BACKEND_URL
 // const BACKEND_API_URL = "http://170.187.252.177/api"
 // const LOCAL_BACKEND_API = "http://localhost:8000/api"
-const LOCAL_BACKEND = "http://170.187.252.177"
+// const LOCAL_BACKEND = "http://localhost:8000/"
 
 
 
@@ -44,8 +45,8 @@ const TrackingDetails = (props: packageType) => {
 
     // console.log(props.package);
     
-    // const fetchData = () => { return axios.get(`${LOCAL_BACKEND_API}/v1/tracking/${props.package}/`) }
-    const fetchData = () => { return axios.get(`http://170.187.252.177/api/v1/tracking/${props.package}/`) }
+    const fetchData = () => { return axios.get(`${BACKEND_API_URL}/v1/tracking/${props.package}/`) }
+    // const fetchData = () => { return axios.get(`http://localhost:8000/api/v1/tracking/${props.package}/`) }
 
     const {isLoading, data, error, isFetching, refetch} = useQuery(
         'super-heros', 
@@ -208,7 +209,7 @@ const TrackingDetails = (props: packageType) => {
                                 Pickup Date:
                             </th>
                             <td className="py-4 px-6 bg-red-600 text-white">
-                                {packageData.package.pickup_date}
+                                {newCustDateTime(new Date(packageData.package.pickup_date))}
                             </td>
                         </tr>
 
@@ -267,7 +268,7 @@ const TrackingDetails = (props: packageType) => {
                                 {
                                     packageData.package.reciepts ? (
                                         <Link 
-                                            href={`${LOCAL_BACKEND}/${packageData.package.reciepts}`} 
+                                            href={`${BACK_URL}/${packageData.package.reciepts}`} 
                                             passHref 
                                             target={"_blank"}
                                             className="font-semibold text-lg"
