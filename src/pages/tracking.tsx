@@ -47,24 +47,36 @@ const Tracking = () => {
 
     const getPackage = () => { return axios.get(`https://api.innerkomfort.in/api/v1/tracking/${packageNo}/`) }
 
-    const {isLoading, data, error, isFetching, refetch} = useQuery(
+    // emulates a fetch (useQuery expects a Promise)
+    // const getPackage = () => {
+    //     return new Promise(resolve => {
+    //     resolve(axios.get(`https://api.innerkomfort.in/api/v1/tracking/${packageNo}/`));
+    //     });
+    // };
+
+    const {isLoading, data, error, isFetching, isSuccess, refetch} = useQuery(
         'package', 
         getPackage,
         {
             // cacheTime: 5000,
             // staleTime: 30000
             // refetchOnMount: true, //true by default
-            // refetchOnWindowFocus: true, //by default true
+            refetchOnWindowFocus: true, //by default true --> for using refetch fn for on click event
             // refetchInterval: 3000,
             // refetchIntervalInBackground: true,
-            enabled: false
+            enabled: false  //--> for using refetch fn for on click event
         }
     )
 
+    // const handleClick = () => {
+    //     // manually refetch
+    //     refetch();
+    // };
+
     if (isLoading || isFetching) {
         return (
-            // <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">Loading...</h2>
-            <div className="flex justify-center items-center text-center">
+            // <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold min-h-screen">Loading...</h2>
+            <div className="flex justify-center items-center text-center min-h-screen">
                 <Spinner />
             </div>
         )
@@ -77,17 +89,6 @@ const Tracking = () => {
     const packageData = data?.data
 
     console.log(packageData)
-
-    // const submitHandler = (e: any) => {
-    //     e.preventDefault();
-
-    //     if (packageNo==="") {
-    //         console.log("Please Enter Package no.")
-    //     } else {
-    //         console.log(packageNo);
-    //         // fetchPackageData(packageNo);
-    //     }
-    // }
 
     const newCustDateTime = (x: any) => {
         if (packageData.package.delivery_date !== null || packageData.updates.updation_datetime !== null) {
@@ -130,7 +131,7 @@ const Tracking = () => {
                         </label>
                         <button
                             className="w-full col-auto rounded-md bg-black py-2 px-8 lg:col-span-2 font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:-translate-y-[2px] hover:bg-blue-800 hover:shadow-blue-800/20 text-white text-center items-center"
-                            onClick={()=>{refetch}}
+                            onClick={()=>refetch()}
                         >
                             Track
                         </button>
@@ -142,6 +143,7 @@ const Tracking = () => {
                 <div className="w-full mx-auto text-left sm:w-11/12 xl:w-8/12 md:text-center">
                     {
                         packageData ? (
+                            isSuccess ? (
                                 <div className="mb-6 text-lg text-gray-600 md:text-xl md:leading-normal">
                                     <h2 className="mb-6 text-xl font-semibold text-black">Following are the Details of Consignment(s):</h2>
 
@@ -304,8 +306,11 @@ const Tracking = () => {
                                         </table>
                                     </div>
                                 </div>
+                                ) : (
+                                    <p className="text-black text-md">No Records found...</p>
+                                )
                         ) : (
-                            <p className="text-black text-md">No Records found...</p>
+                            <></>
                         )
                     }
                 </div>
