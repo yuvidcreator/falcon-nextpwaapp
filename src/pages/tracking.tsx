@@ -130,7 +130,7 @@ const Tracking = () => {
                         </label>
                         <button
                             className="w-full col-auto rounded-md bg-black py-2 px-8 lg:col-span-2 font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:-translate-y-[2px] hover:bg-blue-800 hover:shadow-blue-800/20 text-white text-center items-center"
-                            onClick={refetch}
+                            onClick={()=>{refetch}}
                         >
                             Track
                         </button>
