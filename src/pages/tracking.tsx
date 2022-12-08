@@ -1,11 +1,15 @@
 import { useState } from 'react';
-// import axios from 'axios';
-// import { useQuery } from 'react-query'; // userQuery used for basic datafetching 
+import { useQuery } from 'react-query'; // userQuery used for basic datafetching 
+import axios from 'axios';
+import { FROMAPI_URL, FROMBACK_URL } from '../utils';
+import Link from 'next/link';
+import Spinner from '../components/common/Spinner';
+// import TrackingDetails from '../components/Tracking/TrackingDetails';
+// import Spinner from '../common/Spinner';
 // import TrackPackageDetail from '../components/GetPackageDetails';
 // import GradientText from '../components/GradientText'
 // import Link from 'next/link';
 // import Tracker from '../components/Tracker'
-import TrackingDetails from '../components/Tracking/TrackingDetails';
 
 
 type trackingType = {
@@ -41,34 +45,66 @@ const Tracking = () => {
 
     const [packageNo, setPackageNo] = useState("");
 
-    const submitHandler = (e: any) => {
-        e.preventDefault();
+    const getPackage = () => { return axios.get(`https://api.innerkomfort.in/api/v1/tracking/${packageNo}/`) }
 
-        if (packageNo==="") {
-            console.log("Please Enter Package no.")
+    const {isLoading, data, error, isFetching, refetch} = useQuery(
+        'package', 
+        getPackage,
+        {
+            // cacheTime: 5000,
+            // staleTime: 30000
+            // refetchOnMount: true, //true by default
+            // refetchOnWindowFocus: true, //by default true
+            // refetchInterval: 3000,
+            // refetchIntervalInBackground: true,
+            enabled: false
+        }
+    )
+
+    if (isLoading || isFetching) {
+        return (
+            // <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">Loading...</h2>
+            <div className="flex justify-center items-center text-center">
+                <Spinner />
+            </div>
+        )
+    }
+
+    if (error instanceof Error) {
+        return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">{error.message}</h2>
+    }
+
+    const packageData = data?.data
+
+    console.log(packageData)
+
+    // const submitHandler = (e: any) => {
+    //     e.preventDefault();
+
+    //     if (packageNo==="") {
+    //         console.log("Please Enter Package no.")
+    //     } else {
+    //         console.log(packageNo);
+    //         // fetchPackageData(packageNo);
+    //     }
+    // }
+
+    const newCustDateTime = (x: any) => {
+        if (packageData.package.delivery_date !== null || packageData.updates.updation_datetime !== null) {
+            const formatDateTime = new Intl.DateTimeFormat('en-GB', { 
+                dateStyle: 'medium', 
+                timeStyle: 'short' 
+            }).format(x);
+    
+            return formatDateTime;
         } else {
-            console.log(packageNo);
-
-            return (
-                <>
-                    {/* <Tracker package={packageNo} /> */}
-                    <TrackingDetails package={packageNo}  />
-                </>
-            )
+            return null;
         }
     }
 
     return (
         <>
-            {/* <div className="flex justify-center items-center text-center min-h-screen">
-                <GradientText text={"Following are the Details of Consignment(s):"} />
-            </div>
-            <br /> */}
-            {/* <div className="flex justify-center items-center">
-                <GradientText text={"Following are the Details of Consignment(s):"} />
-            </div> */}
-
-            <section className="px-4 py-32 mx-auto max-w-7xl mb-4 mt-4 lg:mt-32">
+            <section className="px-4 py-32 mx-auto max-w-7xl mb-4 mt-4 lg:mt-16">
                 <div className="w-full mx-auto text-left sm:w-11/12 xl:w-8/12 md:text-center">
                     <h1 className="mb-3 text-3xl font-bold text-gray-900 lg:text-5xl md:leading-tight lg:font-extrabold">A secure, faster way for Delivery.</h1>
                     <p className="mb-6 text-lg text-gray-600 md:text-xl md:leading-normal">
@@ -76,7 +112,7 @@ const Tracking = () => {
                     </p>
                     <form 
                         className="grid w-full grid-cols-1 gap-3 pt-1 mx-auto mb-2 lg:grid-cols-6 md:w-7/12"
-                        onSubmit={submitHandler}
+                        // onSubmit={submitHandler}
                     >
                         <label className="col-auto lg:col-span-3 text-center items-center">
                             <span className="sr-only">Track Your Package</span>
@@ -86,13 +122,15 @@ const Tracking = () => {
                                 placeholder="Enter Package No..." 
                                 name="packageNo"
                                 value={packageNo} 
-                                onChange={(e)=>setPackageNo(e.target.value)}
+                                // onChange={(e)=>setPackageNo(e.target.value)}
+                                onChange={({ target: { value } }) => setPackageNo(value)}
                                 pattern="[a-zA-Z0-9]{1,20}"
                                 title="Package No must be in digits (0 to 9) or alphabets (a to z) or (A to Z)."
                             />
                         </label>
                         <button
                             className="w-full col-auto rounded-md bg-black py-2 px-8 lg:col-span-2 font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:-translate-y-[2px] hover:bg-blue-800 hover:shadow-blue-800/20 text-white text-center items-center"
+                            onClick={refetch}
                         >
                             Track
                         </button>
@@ -103,10 +141,169 @@ const Tracking = () => {
             <section className="px-4 py-4 mx-auto max-w-7xl mb-32">
                 <div className="w-full mx-auto text-left sm:w-11/12 xl:w-8/12 md:text-center">
                     {
-                        packageNo ? (
-                            <div className="mb-6 text-lg text-gray-600 md:text-xl md:leading-normal">
-                                <TrackingDetails package={packageNo}  />
-                            </div>
+                        packageData ? (
+                                <div className="mb-6 text-lg text-gray-600 md:text-xl md:leading-normal">
+                                    <h2 className="mb-6 text-xl font-semibold text-black">Following are the Details of Consignment(s):</h2>
+
+                                    <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+                                        <table className="w-full text-sm text-left text-black">
+                                            <thead className="text-xs uppercase border-b border">
+                                                <tr>
+                                                    <th scope="col" className="py-4 px-6">
+                                                        Pakcage Details
+                                                    </th>
+                                                    <th scope="col" className="py-4 px-6 bg-blue-700 text-white">
+                                                        Tracking Details
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody key={packageData.package.id}>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Package No:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.package_no}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Consignor:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.consignor}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Consignee Name:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.consignee_name}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Consignee Address:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.consignee_address}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Forwarding Associate:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.forwarding_associate}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Account No:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.account_no}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Proof:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.proof}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        P.O.D.:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.pod}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Pickup Date:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {newCustDateTime(new Date(packageData.package.pickup_date))}
+                                                    </td>
+                                                </tr>
+
+                                                {
+                                                    packageData.updates.map((item: updateType) => {
+                                                        return (
+                                                            <>
+                                                                <tr className="border-b border" key={item.update_note}>
+                                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                                        Note:
+                                                                    </th>
+                                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                                        {item.update_note}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr className="border-b border" key={item.updation_datetime}>
+                                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                                        Updation Date:
+                                                                    </th>
+                                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                                        {newCustDateTime(new Date(item.updation_datetime))}
+                                                                    </td>
+                                                                </tr>
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Delivery Status:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {packageData.package.status}
+                                                    </td>
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Deliveblue Date:
+                                                    </th>
+                                                    {
+                                                        packageData.package.delivery_date ? (
+                                                            <td className="py-4 px-6 bg-blue-600 text-white">
+                                                                {newCustDateTime(new Date(packageData.package.delivery_date))}
+                                                            </td>
+                                                        ) : (
+                                                            <td className="py-4 px-6 bg-blue-600 text-white">
+                                                            </td>
+                                                        )
+                                                    }
+                                                </tr>
+                                                <tr className="border-b border">
+                                                    <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
+                                                        Reciept:
+                                                    </th>
+                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                        {
+                                                            packageData.package.reciepts ? (
+                                                                <Link 
+                                                                    href={`${FROMBACK_URL}${packageData.package.reciepts}`} 
+                                                                    passHref 
+                                                                    target={"_blank"}
+                                                                    className="font-semibold text-lg"
+                                                                >
+                                                                    Click to See Reciept
+                                                                </Link>
+                                                            ) : (
+                                                                <> </>
+                                                            )
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                         ) : (
                             <p className="text-black text-md">No Records found...</p>
                         )

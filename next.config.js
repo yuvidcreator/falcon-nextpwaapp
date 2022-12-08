@@ -7,7 +7,7 @@ const withPWA = require('next-pwa')({
   register: true,
   skipWaiting: true,
   fallbacks: {
-    image: '/images/wmds.jpg',
+    image: '/falcon-courier-logo.png',
     // document: '/other-offline',  // if you want to fallback to a custom page other than /_offline
     // font: '/static/font/fallback.woff2',
     // audio: ...,

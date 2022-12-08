@@ -37,17 +37,17 @@ type packageType = {
 
 const TrackingDetails = (props: packageType) => {
     
-    const fetchData = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${props.package}/`) }
+    const getPackage = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${props.package}/`) }
 
     const {isLoading, data, error, isFetching, refetch} = useQuery(
-        'super-heros', 
-        fetchData,
+        'package', 
+        getPackage,
         {
             // cacheTime: 5000,
             // staleTime: 30000
             // refetchOnMount: true, //true by default
             // refetchOnWindowFocus: true, //by default true
-            // refetchInterval: 2000,
+            // refetchInterval: 3000,
             // refetchIntervalInBackground: true,
             // enabled: false
         }
@@ -67,7 +67,7 @@ const TrackingDetails = (props: packageType) => {
     // console.log(data?.data)
     
     const packageData = data?.data
-    console.log(packageData)
+    // console.log(packageData)
 
     const newCustDateTime = (x: any) => {
         if (packageData.package.delivery_date !== null || packageData.updates.updation_datetime !== null) {
@@ -229,7 +229,7 @@ const TrackingDetails = (props: packageType) => {
                                 {
                                     packageData.package.reciepts ? (
                                         <Link 
-                                            href={`${FROMBACK_URL}/${packageData.package.reciepts}`} 
+                                            href={`${FROMBACK_URL}${packageData.package.reciepts}`} 
                                             passHref 
                                             target={"_blank"}
                                             className="font-semibold text-lg"

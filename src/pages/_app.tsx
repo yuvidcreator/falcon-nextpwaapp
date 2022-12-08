@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient, Hydrate } from 'react-query';
 // import { ReactQueryDevtools } from 'react-query/devtools'
 import Layout from '../components/common/layout'
 
@@ -27,9 +27,11 @@ export default function App({ Component, pageProps }: AppProps) {
   } else {
     return (
       <QueryClientProvider client={queryClient}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Hydrate>
       </QueryClientProvider>
     )
   }
