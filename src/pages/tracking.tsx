@@ -78,15 +78,32 @@ const Tracking = () => {
         )
     }
 
-    // if (error instanceof Error) {
-    //     // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">{error.message}</h2>
-    //     toast.error(error.message);
-    // }
-
-    console.log(failureCount)
-    if (isError) {
-        toast.error("Entered Package Not found.");
+    if (error instanceof Error) {
+        // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold min-h-screen">{error.message}</h2>
+        // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold mt-52">{error.message}</h2>
+        // return (
+        //     <>
+        //         <div className="flex justify-center items-center text-center p-8 mt-36 text-md text-black font-semibold">
+        //             <h2>Requested Package No not Found. <br />Please Reload Page and Enter Valid Package No.</h2>
+        //         </div>
+        //         <div className="flex justify-center items-center text-center mb-16 text-md">
+        //             <Link
+        //                 href={"/tracking"}
+        //                 passHref
+        //                 className="w-15/16 col-auto rounded-md bg-black py-2 px-8 lg:col-span-2 font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:-translate-y-[2px] hover:bg-blue-800 hover:shadow-blue-800/20 text-white text-center items-center"
+        //             >
+        //                 Go Back
+        //             </Link>
+        //         </div>
+        //     </>
+        // )
+        toast.error(error.message);
     }
+
+    // console.log(failureCount)
+    // if (isError) {
+    //     toast.error("Entered Package Not found.");
+    // }
 
     const packageData = data?.data
 
@@ -122,7 +139,7 @@ const Tracking = () => {
 
     return (
         <>
-            <section className="px-4 py-32 mx-auto max-w-7xl mb-4 mt-4 lg:mt-16">
+            <section className="px-4 py-32 mx-auto max-w-7xl mt-4 lg:mt-16">
                 <div className="w-full mx-auto text-left sm:w-11/12 xl:w-8/12 md:text-center">
                     <h1 className="mb-3 text-3xl font-bold text-gray-900 lg:text-5xl md:leading-tight lg:font-extrabold">A secure, faster way for Delivery.</h1>
                     <p className="mb-6 text-lg text-gray-600 md:text-xl md:leading-normal">
@@ -159,7 +176,7 @@ const Tracking = () => {
                 </div>
             </section>
 
-            <section className="px-4 py-4 mx-auto max-w-7xl mb-32">
+            <section className="px-4 mx-auto max-w-7xl mb-32">
                 <div className="w-full mx-auto text-left sm:w-11/12 xl:w-8/12 md:text-center">
                     {
                         packageData ? (
@@ -172,7 +189,7 @@ const Tracking = () => {
                                             <thead className="text-xs uppercase border-b border">
                                                 <tr>
                                                     <th scope="col" className="py-4 px-6">
-                                                        Pakcage Details
+                                                        Details
                                                     </th>
                                                     <th scope="col" className="py-4 px-6 bg-blue-700 text-white">
                                                         Tracking Details
@@ -305,14 +322,14 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Reciept:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-700 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white underline">
                                                         {
                                                             packageData.package.reciepts ? (
                                                                 <Link 
                                                                     href={`${FROMBACK_URL}${packageData.package.reciepts}`} 
                                                                     passHref 
                                                                     target={"_blank"}
-                                                                    className="font-semibold text-lg"
+                                                                    className="font-bold text-md"
                                                                 >
                                                                     Click to See Reciept
                                                                 </Link>

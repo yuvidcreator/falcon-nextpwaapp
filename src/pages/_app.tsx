@@ -35,7 +35,8 @@ export default function App({ Component, pageProps }: AppProps) {
           </Layout>
           <ToastContainer 
             theme="dark" 
-            position="bottom-center"
+            // position="bottom-center"
+            position="bottom-right"
           />
         </Hydrate>
       </QueryClientProvider>
