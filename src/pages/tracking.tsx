@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'; // userQuery used for basic datafetching
 import axios from 'axios';
 import { FROMAPI_URL, FROMBACK_URL } from '../utils';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 import Spinner from '../components/common/Spinner';
 // import TrackingDetails from '../components/Tracking/TrackingDetails';
 // import Spinner from '../common/Spinner';
@@ -54,7 +55,7 @@ const Tracking = () => {
     //     });
     // };
 
-    const {isLoading, data, error, isFetching, isSuccess, refetch} = useQuery(
+    const {isLoading, data, error, isFetching, isSuccess, isError, refetch} = useQuery(
         'package', 
         getPackage,
         {
@@ -78,12 +79,32 @@ const Tracking = () => {
     }
 
     if (error instanceof Error) {
-        return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">{error.message}</h2>
+        // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">{error.message}</h2>
+        toast.error(error.message);
     }
+
+    // if (isError) {
+    //     // toast.error("Entered Package Not found.");
+    // }
 
     const packageData = data?.data
 
     // console.log(packageData)
+
+    const clickButtonHandler = (e: any) => {
+        e.preventDefault();
+
+        if (packageNo==="") {
+            // console.log("Please Enter Package no.")
+            toast.warn("Please Enter Package no.")
+            // return (
+            //     <h2 className="flex justify-center text-center items-center font-medium text-lg mt-52">Please Enter Package No.</h2>
+            // )
+        } else {
+            // console.log(packageNo);
+            refetch();
+        }
+    }
 
     const newCustDateTime = (x: any) => {
         if (packageData.package.delivery_date !== null || packageData.updates.updation_datetime !== null) {
@@ -118,18 +139,21 @@ const Tracking = () => {
                                 placeholder="Enter Package No..." 
                                 name="packageNo"
                                 value={packageNo} 
-                                // onChange={(e)=>setPackageNo(e.target.value)}
-                                onChange={({ target: { value } }) => setPackageNo(value)}
-                                pattern="[a-zA-Z0-9]{1,20}"
+                                onChange={(e)=>setPackageNo(e.target.value)}
+                                // onChange={({ target: { value } }) => setPackageNo(value)}
+                                pattern="[a-zA-Z0-9]{1,50}"
                                 title="Package No must be in digits (0 to 9) or alphabets (a to z) or (A to Z)."
                             />
                         </label>
                         <button
                             className="w-full col-auto rounded-md bg-black py-2 px-8 lg:col-span-2 font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:-translate-y-[2px] hover:bg-blue-800 hover:shadow-blue-800/20 text-white text-center items-center"
-                            onClick={()=>refetch()}
+                            onClick={clickButtonHandler}
                         >
                             Track
                         </button>
+                        {/* {
+                            isError ? <h2 className="text-center justify-center items-center">Entered Package Not found.</h2> : <></>
+                        } */}
                     </form>
                 </div>
             </section>

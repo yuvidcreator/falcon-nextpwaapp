@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import type { AppProps } from 'next/app'
 import { QueryClientProvider, QueryClient, Hydrate } from 'react-query';
 // import { ReactQueryDevtools } from 'react-query/devtools'
@@ -31,6 +33,10 @@ export default function App({ Component, pageProps }: AppProps) {
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          <ToastContainer 
+            theme="dark" 
+            position="bottom-center"
+          />
         </Hydrate>
       </QueryClientProvider>
     )
