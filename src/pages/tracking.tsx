@@ -45,12 +45,12 @@ const Tracking = () => {
 
     const [packageNo, setPackageNo] = useState("");
 
-    const getPackage = () => { return axios.get(`https://api.innerkomfort.in/api/v1/tracking/${packageNo}/`) }
+    const getPackage = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${packageNo}/`) }
 
     // emulates a fetch (useQuery expects a Promise)
     // const getPackage = () => {
     //     return new Promise(resolve => {
-    //     resolve(axios.get(`https://api.innerkomfort.in/api/v1/tracking/${packageNo}/`));
+    //     resolve(axios.get(`https://backend.falconcourierservice.com/api/v1/tracking/${packageNo}/`));
     //     });
     // };
 
@@ -67,11 +67,6 @@ const Tracking = () => {
             enabled: false  //--> for using refetch fn for on click event
         }
     )
-
-    // const handleClick = () => {
-    //     // manually refetch
-    //     refetch();
-    // };
 
     if (isLoading || isFetching) {
         return (
