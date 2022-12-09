@@ -79,7 +79,7 @@ const Tracking = () => {
     }
 
     if (error instanceof Error) {
-        // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold min-h-screen">{error.message}</h2>
+        return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold min-h-screen">{error.message}</h2>
         // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold mt-52">{error.message}</h2>
         // return (
         //     <>
@@ -97,7 +97,8 @@ const Tracking = () => {
         //         </div>
         //     </>
         // )
-        toast.error(error.message);
+        // toast.error(error.message);
+        // setPackageNo("");
     }
 
     // console.log(failureCount)
@@ -305,7 +306,7 @@ const Tracking = () => {
                                                 </tr>
                                                 <tr className="border-b border">
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
-                                                        Deliveblue Date:
+                                                        Delivery Date:
                                                     </th>
                                                     {
                                                         packageData.package.delivery_date ? (

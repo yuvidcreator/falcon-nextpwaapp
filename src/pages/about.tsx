@@ -670,7 +670,7 @@ const About = () => {
                                 </p>
                                 {/* ::Button */}
                                 <Link 
-                                    href="#link" 
+                                    href={"/contact"}
                                     className="mt-6 py-2.5 px-6 shadow rounded bg-gray-50 text-sm sm:text-base text-gray-700 font-semibold hover:shadow-lg hover:bg-white hover:text-gray-900"
                                 >
                                     Contact us

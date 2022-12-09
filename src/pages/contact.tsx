@@ -1,41 +1,105 @@
 import React, { useRef, useState } from 'react'
+import {useMutation, useQuery} from 'react-query';
 // import GradientText from '../components/GradientText'
 import { FiMail } from 'react-icons/fi'
 import Link from 'next/link'
+import { FROMAPI_URL } from '../utils';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+
+
+type postData = {
+    name: string,
+    email: string,
+    mobile: number,
+    message: string
+}
+
+
+
+const submitForm = async({name, email, mobile, message}: postData) => {
+
+    const body = JSON.stringify({name, email, mobile, message})
+
+    const config = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    }
+
+    const resp = await axios.post(`${FROMAPI_URL}/v1/common/contact/`, body, config)
+
+    // console.log(resp.data)
+
+    return resp;
+}
+
+
+
 
 const Contact = () => {
-    // const nameRef = useRef()
-    // const emailRef = useRef()
-    // const messageRef = useRef()
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState<number>();
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault()
-        /* 
-        Do something here !
-        */
+    const handleNumChange = (e: any) => {
+        const limit = 10;
+        setMobile(e.target.value.slice(0, limit));
+    };
 
-        if (name==="") {
-            console.log("Please Enter Name")
-        } if (email==="") {
-            console.log("Please Enter Email")
-        } if (message==="") {
-            console.log("Please Enter Message")
-        } else {
-            console.log(name, email, message);
-            const inputData = {
-                name, email, message
-            };
+    // const handleSubmit = (e: any) => {
+    //     e.preventDefault()
 
-            console.log(inputData);
-            return (
-                <></>
-            )
+    //     if (name==="") {
+    //         // console.log("Please Enter Name")
+    //         toast.error("Please Enter Name")
+    //     } if (email==="") {
+    //         // console.log("Please Enter Valid Email")
+    //         toast.error("Please Enter Valid Email")
+    //     } if (mobile===undefined) {
+    //         // console.log("Please Enter Valid Mobile no.")
+    //         toast.error("Please Enter Valid Mobile no.")
+    //     } if (message==="") {
+    //         // console.log("Please Enter Message")
+    //         toast.error("Please Enter Message")
+    //     } else {
+    //         console.log(name, email, mobile, message);
+    //         const inputData = {
+    //             name, email, mobile, message
+    //         };
+
+    //         // console.log(inputData);
+    //         submitForm(inputData);
+    //     }
+    // }
+
+    const {mutate, data, status} = useMutation( submitForm, {
+        onSuccess:()=>{
+            // alert("Successfully Posted")
+            toast.success("Successfully Submitted.")
+            setName(""),
+            setEmail(""),
+            setMobile(0),
+            setMessage("")
+        }
+    })
+
+    // console.log(data?.data)
+
+    const formHandler = (e: any)=>{
+        e.preventDefault();
+        try {
+            mutate({ name, email, mobile, message })
+        } catch (error) {
+            // console.log(error)
+            toast.error("Smothing wrong")
         }
     }
+
 
     return (
         <div className="relative mx-auto w-full max-w-7xl bg-white text-gray-700 lg:mt-32 mt-16">
@@ -58,7 +122,7 @@ const Contact = () => {
 
             {/* :CONTACT FORM CONTAINER */}
             <div className="order-3 md:order-2 col-span-full md:col-span-1 py-5 md:py-10 px-6">
-                <form action="" className="mx-auto max-w-xl space-y-4" onSubmit={handleSubmit}>
+                <form action="" className="mx-auto max-w-xl space-y-4" onSubmit={formHandler}>
                     {/* ::Name Input */}
                     <div>
                         {/* :::label */}
@@ -72,8 +136,10 @@ const Contact = () => {
                             className="w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-blue-800 font-light text-black border mt-0 form-input form-input-lg"
                             value={name} 
                             onChange={(e)=>setName(e.target.value)}
-                            pattern="[a-zA-Z]{1,20}"
+                            pattern="[a-zA-Z]{1,50}"
                             title="Special characters and numbers not allowed"
+                            required
+                            maxLength={50}
                         />
                     </div>
                     {/* ::Email Input */}
@@ -89,6 +155,25 @@ const Contact = () => {
                             className="w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-blue-800 font-light text-black border mt-0 form-input form-input-lg"
                             value={email} 
                             onChange={(e)=>setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    {/* ::Mobile Input */}
+                    <div>
+                        {/* :::label */}
+                        <label htmlFor="email" className="sr-only">Mobile No.</label>
+                        {/* :::input */}
+                        <input 
+                            type="number" 
+                            id="mobile" 
+                            name="mobile"
+                            placeholder="Mobile No..."
+                            className="w-full bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-blue-800 font-light text-black border mt-0 form-input form-input-lg"
+                            value={mobile} 
+                            onChange={handleNumChange}
+                            required
+                            pattern="[0-9]{1,10}"
+                            title="Mobile No must be in digits (0 to 9)."
                         />
                     </div>
                     {/* ::Message Input */}
@@ -104,6 +189,7 @@ const Contact = () => {
                             value={message} 
                             onChange={(e)=>setMessage(e.target.value)}
                             title="Special characters and numbers not allowed"
+                            maxLength={200}
                         ></textarea>
                     </div>
                     {/* ::Submit Button */}
@@ -116,6 +202,8 @@ const Contact = () => {
                         </button>
                     </div>
                 </form>
+
+                {/* {status=="success" && <strong style={{marginTop:"20px"}}>response :{data.data.message}</strong>} */}
             </div>
 
 
