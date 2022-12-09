@@ -55,7 +55,7 @@ const Tracking = () => {
     //     });
     // };
 
-    const {isLoading, data, error, isFetching, isSuccess, isError, refetch} = useQuery(
+    const {isLoading, data, error, isFetching, isSuccess, isError, failureCount, refetch} = useQuery(
         'package', 
         getPackage,
         {
@@ -78,14 +78,15 @@ const Tracking = () => {
         )
     }
 
-    if (error instanceof Error) {
-        // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">{error.message}</h2>
-        toast.error(error.message);
-    }
-
-    // if (isError) {
-    //     // toast.error("Entered Package Not found.");
+    // if (error instanceof Error) {
+    //     // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold">{error.message}</h2>
+    //     toast.error(error.message);
     // }
+
+    console.log(failureCount)
+    if (isError) {
+        toast.error("Entered Package Not found.");
+    }
 
     const packageData = data?.data
 
