@@ -79,7 +79,7 @@ const Tracking = () => {
     }
 
     if (error instanceof Error) {
-        return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold min-h-screen">{error.message}</h2>
+        return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold min-h-screen space-x-2">Requested Package Number not Found. Please Reload the Page.</h2>
         // return <h2 className="flex justify-center items-center text-center text-lg text-black font-semibold mt-52">{error.message}</h2>
         // return (
         //     <>
