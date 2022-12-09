@@ -9,10 +9,10 @@ import { toast } from 'react-toastify';
 
 
 
-type postData = {
+interface postData  {
     name: string,
     email: string,
-    mobile: number,
+    mobile: string,
     message: string
 }
 
@@ -43,7 +43,7 @@ const Contact = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [mobile, setMobile] = useState<number>();
+    const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
 
     const handleNumChange = (e: any) => {
@@ -83,7 +83,7 @@ const Contact = () => {
             toast.success("Successfully Submitted.")
             setName(""),
             setEmail(""),
-            setMobile(0),
+            setMobile(""),
             setMessage("")
         }
     })
