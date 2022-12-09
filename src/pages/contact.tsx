@@ -126,7 +126,7 @@ const Contact = () => {
                     {/* ::Title Contact Us */}
                     <h2 className="text-4xl font-oswald uppercase">Contact us</h2>
                     {/* ::Text */}
-                    <p className="text-sm text-gray-500">Falcon Couriers provides businesses across Canada with responsible delivery at a competitive price. There’s a Falcon to our delivery standards that you won’t find anywhere else.</p>
+                    <p className="text-sm text-gray-500">Falcon Couriers provides businesses across India with responsible delivery at a competitive price. There’s a Falcon to our delivery standards that you won’t find anywhere else.</p>
                     {/* ::Email contact */}
                     <Link href="mailto:info@falconcourierservice.com" className="inline-flex items-center text-sm text-blue-400 font-semibold hover:text-blue-500">
                         {/* <MailIcon className="mr-2 w-5 text-gray-400" /> */}
