@@ -88,7 +88,7 @@ const Tracking = () => {
 
     const packageData = data?.data
 
-    console.log(packageData)
+    // console.log(packageData)
 
     const newCustDateTime = (x: any) => {
         if (packageData.package.delivery_date !== null || packageData.updates.updation_datetime !== null) {
@@ -165,7 +165,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Package No:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.package_no}
                                                     </td>
                                                 </tr>
@@ -173,7 +173,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Consignor:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.consignor}
                                                     </td>
                                                 </tr>
@@ -181,7 +181,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Consignee Name:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.consignee_name}
                                                     </td>
                                                 </tr>
@@ -189,7 +189,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Consignee Address:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.consignee_address}
                                                     </td>
                                                 </tr>
@@ -197,7 +197,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Forwarding Associate:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.forwarding_associate}
                                                     </td>
                                                 </tr>
@@ -205,7 +205,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Account No:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.account_no}
                                                     </td>
                                                 </tr>
@@ -213,7 +213,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Proof:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.proof}
                                                     </td>
                                                 </tr>
@@ -221,7 +221,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         P.O.D.:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.pod}
                                                     </td>
                                                 </tr>
@@ -229,7 +229,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Pickup Date:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {newCustDateTime(new Date(packageData.package.pickup_date))}
                                                     </td>
                                                 </tr>
@@ -242,7 +242,7 @@ const Tracking = () => {
                                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                                         Note:
                                                                     </th>
-                                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                                         {item.update_note}
                                                                     </td>
                                                                 </tr>
@@ -250,7 +250,7 @@ const Tracking = () => {
                                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                                         Updation Date:
                                                                     </th>
-                                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                                         {newCustDateTime(new Date(item.updation_datetime))}
                                                                     </td>
                                                                 </tr>
@@ -262,7 +262,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Delivery Status:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {packageData.package.status}
                                                     </td>
                                                 </tr>
@@ -272,11 +272,11 @@ const Tracking = () => {
                                                     </th>
                                                     {
                                                         packageData.package.delivery_date ? (
-                                                            <td className="py-4 px-6 bg-blue-600 text-white">
+                                                            <td className="py-4 px-6 bg-blue-700 text-white">
                                                                 {newCustDateTime(new Date(packageData.package.delivery_date))}
                                                             </td>
                                                         ) : (
-                                                            <td className="py-4 px-6 bg-blue-600 text-white">
+                                                            <td className="py-4 px-6 bg-blue-700 text-white">
                                                             </td>
                                                         )
                                                     }
@@ -285,7 +285,7 @@ const Tracking = () => {
                                                     <th scope="row" className="py-4 px-6 font-medium whitespace-nowrap">
                                                         Reciept:
                                                     </th>
-                                                    <td className="py-4 px-6 bg-blue-600 text-white">
+                                                    <td className="py-4 px-6 bg-blue-700 text-white">
                                                         {
                                                             packageData.package.reciepts ? (
                                                                 <Link 
