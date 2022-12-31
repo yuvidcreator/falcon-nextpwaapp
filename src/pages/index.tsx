@@ -3,7 +3,9 @@
 import { useRouter } from "next/router";
 import SeoMetas from "../components/common/seo/SeoMetas";
 import Contact1 from "../components/ContactSectionForIndex";
+import Feature from "../components/Feature";
 import Gauranty from "../components/Gauranty";
+import Landing from "../components/Landing";
 import Slider from "../components/Slider";
 import WhatMakeUs from "../components/WhatMakeUs";
 // import WhyChooseUs from "../components/WhyChooseUs";
@@ -37,11 +39,16 @@ export default function Home() {
         updatedAt={meta.updatedAt}
         author={meta.author}
       />
-      <div className="mt-16">
-        <Slider />
-      </div>
+      {/* <div className="relative h-[200vh] bg-[#E7ECEE]"> */}
+        <Landing />
+      {/* </div> */}
+      {/* <div className="mt-16">
+        
+      </div> */}
       <Gauranty />
+      <Slider />
       {/* <WhyChooseUs /> */}
+      {/* <Feature /> */}
       <div className="mt-16 mb-8">
         {/* <WhatMakeUs /> */}
         <Contact1 />

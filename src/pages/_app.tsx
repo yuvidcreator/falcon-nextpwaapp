@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import '../styles/globals.css'
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from "react-hot-toast";
+// import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer } from 'react-toastify';
 import type { AppProps } from 'next/app'
 import { QueryClientProvider, QueryClient, Hydrate } from 'react-query';
 // import { ReactQueryDevtools } from 'react-query/devtools'
@@ -32,12 +33,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <Layout>
             <Component {...pageProps} />
+            <Toaster />
           </Layout>
-          <ToastContainer 
+          {/* <ToastContainer 
             theme="dark" 
             // position="bottom-center"
             position="bottom-right"
-          />
+          /> */}
         </Hydrate>
       </QueryClientProvider>
     )

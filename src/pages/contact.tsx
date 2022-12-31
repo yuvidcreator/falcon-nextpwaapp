@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react'
 import {useMutation, useQuery} from 'react-query';
-// import GradientText from '../components/GradientText'
 import { FiMail } from 'react-icons/fi'
 import Link from 'next/link'
 import { FROMAPI_URL } from '../utils';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
+// import { toast } from 'react-toastify';
+// import GradientText from '../components/GradientText'
 
 
 
@@ -80,7 +81,11 @@ const Contact = () => {
     const {mutate, data, status} = useMutation( submitForm, {
         onSuccess:()=>{
             // alert("Successfully Posted")
-            toast.success("Successfully Submitted.")
+            // toast.success("Successfully Submitted.")
+            toast.success(
+                `Contact form Submited Successfully.`, {
+                position: "bottom-center",
+            });
             setName(""),
             setEmail(""),
             setMobile(""),
@@ -96,7 +101,11 @@ const Contact = () => {
             mutate({ name, email, mobile, message })
         } catch (error) {
             // console.log(error)
-            toast.error("Smothing wrong")
+            // toast.error("Smothing wrong")
+            toast.success(
+                `${error}`, {
+                position: "bottom-center",
+            });
         }
     }
 
