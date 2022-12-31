@@ -39,9 +39,6 @@ const ProgerssBar = ({status, comment}: ShipmentStatus) => {
                                         </svg>
                                     </div>
                                 </div>
-                                {/* <div className="bg-green-400 h-6 w-6 rounded-full shadow flex items-center justify-center -mr-3 relative">
-                                    <div className="h-3 w-3 bg-indigo-700 rounded-full animate-ping" />
-                                </div> */}
                                 <div className="bg-green-400 h-6 w-6 rounded-full shadow flex items-center justify-center -mr-3 relative animate-ping">
                                     <div className="h-3 w-3 bg-indigo-700 rounded-full" />
                                 </div>
