@@ -6,7 +6,7 @@ interface ShipmentStatus {
 }
 
 const ProgerssBar = ({status, comment}: ShipmentStatus) => {
-    // console.log(status)
+    console.log(status)
     // console.log(comment)
     return (
         <>

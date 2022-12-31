@@ -164,91 +164,94 @@ const NewTracker = () => {
                                         <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4 text-sm text-black p-4">
                                             <Tab.Panel className="tabPanel">
                                                 <table className="w-full text-sm text-left text-black border" key={packageData.package.id}>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Package No:
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.package_no}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Consignor:
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.consignor}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Consignee Name:
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.consignee_name}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Consignee Address:
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.consignee_address}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Forwarding Associate:
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.forwarding_associate}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Pickup Date:
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {newCustDateTime(new Date(packageData.package.pickup_date))}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            From
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.package_from}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            To
-                                                        </th>
-                                                        <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                            {packageData.package.package_to}
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="border-b border">
-                                                        <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                            Reciept:
-                                                        </th>
-                                                        <td className="text-white py-2 px-6 bg-blue-700 underline border-b border-t border-[#dddde4]">
-                                                            {
-                                                                packageData.package.reciepts ? (
-                                                                    <Link 
-                                                                        href={`${FROMBACK_URL}${packageData.package.reciepts}`} 
-                                                                        passHref 
-                                                                        target={"_blank"}
-                                                                        className="font-bold text-md"
-                                                                    >
-                                                                        Click to See Reciept
-                                                                    </Link>
-                                                                ) : (
-                                                                    <> </>
-                                                                )
-                                                            }
-                                                        </td>
-                                                    </tr>
+                                                    <thead></thead>
+                                                    <tbody>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Package No:
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.package_no}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Consignor:
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.consignor}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Consignee Name:
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.consignee_name}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Consignee Address:
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.consignee_address}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Forwarding Associate:
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.forwarding_associate}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Pickup Date:
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {newCustDateTime(new Date(packageData.package.pickup_date))}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                From
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.package_from}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                To
+                                                            </th>
+                                                            <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
+                                                                {packageData.package.package_to}
+                                                            </td>
+                                                        </tr>
+                                                        <tr className="border-b border">
+                                                            <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
+                                                                Reciept:
+                                                            </th>
+                                                            <td className="text-white py-2 px-6 bg-blue-700 underline border-b border-t border-[#dddde4]">
+                                                                {
+                                                                    packageData.package.reciepts ? (
+                                                                        <Link 
+                                                                            href={`${FROMBACK_URL}${packageData.package.reciepts}`} 
+                                                                            passHref 
+                                                                            target={"_blank"}
+                                                                            className="font-bold text-md"
+                                                                        >
+                                                                            Click to See Reciept
+                                                                        </Link>
+                                                                    ) : (
+                                                                        <> </>
+                                                                    )
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
                                                 </table>
                                             </Tab.Panel>
 
