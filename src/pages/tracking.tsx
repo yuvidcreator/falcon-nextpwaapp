@@ -64,7 +64,7 @@ const NewTracker = () => {
 
     const packageData = data?.data
 
-    console.log(packageData)
+    // console.log(packageData)
 
     const clickButtonHandler = (e: any) => {
         e.preventDefault();
