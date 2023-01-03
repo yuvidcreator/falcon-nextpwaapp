@@ -33,7 +33,11 @@ const NewTracker = () => {
 
     const [packageNo, setPackageNo] = useState("");
 
-    const getPackage = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${packageNo}/`) }
+    const config = {
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    }
+
+    const getPackage = () => { return axios.get(`${FROMAPI_URL}/v1/tracking/${packageNo}/`, config) }
 
     const {isLoading, data, error, isFetching, isSuccess, isError, failureCount, refetch} = useQuery(
         'package', 
