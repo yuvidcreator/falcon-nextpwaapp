@@ -67,7 +67,7 @@ const ProgerssBar = ({status, comment}: ShipmentStatus) => {
                     }
 
                     {
-                        (status === "Shipped") ? (
+                        (status === "In Transit") ? (
                             <>
                                 <div className="w-full flex justify-between bg-indigo-700 h-1 items-center relative">
                                     <div className="flex flex-col mb-8">
@@ -81,7 +81,7 @@ const ProgerssBar = ({status, comment}: ShipmentStatus) => {
                                         </div>
                                     </div>
                                     <div className="flex flex-col mb-8">
-                                        <p className="text-sm mb-2">Shipped</p>
+                                        <p className="text-sm mb-2">In Transit</p>
 
                                         <div className="bg-indigo-700 h-6 w-6 rounded-full shadow flex items-center justify-center -ml-4">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -132,7 +132,7 @@ const ProgerssBar = ({status, comment}: ShipmentStatus) => {
                                         </div>
                                     </div>
                                     <div className="flex flex-col mb-8">
-                                        <p className="text-sm mb-2">Shipped</p>
+                                        <p className="text-sm mb-2">In Transit</p>
 
                                         <div className="bg-indigo-700 h-6 w-6 rounded-full shadow flex items-center justify-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -192,7 +192,7 @@ const ProgerssBar = ({status, comment}: ShipmentStatus) => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mb-8">
-                                    <p className="text-sm mb-2">Shipped</p>
+                                    <p className="text-sm mb-2">In Transit</p>
 
                                     <div className="bg-indigo-700 h-6 w-6 rounded-full shadow flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width={18} height={18} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">

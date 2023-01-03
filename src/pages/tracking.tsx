@@ -208,10 +208,10 @@ const NewTracker = () => {
                                                         </tr>
                                                         <tr className="border-b border">
                                                             <th scope="row" className="border-b border-t border-[#dddde4] py-2 px-6 whitespace-nowrap">
-                                                                Pickup Date:
+                                                                Delivery Date:
                                                             </th>
                                                             <td className="border-b border-t border-[#dddde4] py-2 px-6 bg-blue-700 text-white">
-                                                                {newCustDateTime(new Date(packageData.package.pickup_date))}
+                                                                {newCustDateTime(new Date(packageData.package.delivery_date))}
                                                             </td>
                                                         </tr>
                                                         <tr className="border-b border">
